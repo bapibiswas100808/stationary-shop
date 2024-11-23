@@ -17,16 +17,5 @@ export default [
       'no-console': 'warn',
       'no-undef': 'error',
     },
-    globals: {
-      process: 'readonly',
-    },
   },
-];
-
-// eslint.config.mjs
-const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
-
-module.exports = [
-  // Any other config imports go at the top
-  eslintPluginPrettierRecommended,
 ];
