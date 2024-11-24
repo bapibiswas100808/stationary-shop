@@ -10,6 +10,7 @@ const createOrder = async (req: Request, res: Response) => {
       quantity,
       totalPrice,
     );
+
     res.status(200).json({
       success: true,
       message: 'Order Created Successfully',

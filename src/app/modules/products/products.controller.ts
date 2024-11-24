@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { ProductServices } from './products.service';
-import mongoose from 'mongoose';
 
 // create product
 const createProduct = async (req: Request, res: Response) => {
@@ -46,20 +45,7 @@ const getSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
 
-    if (!mongoose.isValidObjectId(productId)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid Product ID',
-      });
-    }
     const result = await ProductServices.getSingleProductFromDB(productId);
-
-    if (!result) {
-      return res.status(404).json({
-        success: false,
-        message: 'Product not found',
-      });
-    }
     // send response
     res.status(200).json({
       success: true,
@@ -84,12 +70,6 @@ const updateSingleProduct = async (req: Request, res: Response) => {
       productId,
       updateData,
     );
-    if (!result) {
-      return res.status(404).json({
-        success: false,
-        message: 'Product not found',
-      });
-    }
     // send response
     res.status(200).json({
       success: true,
@@ -109,12 +89,7 @@ const deleteSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const result = await ProductServices.deleteSingleProductFromDB(productId);
-    if (!result) {
-      return res.status(404).json({
-        success: false,
-        message: 'Product not found',
-      });
-    }
+
     // send response
     res.status(200).json({
       success: true,

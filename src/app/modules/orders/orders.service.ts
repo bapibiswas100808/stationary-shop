@@ -18,6 +18,10 @@ const createNewOrderToDb = async (
   if (product.quantity < quantity) {
     throw new Error('Insufficient stock');
   }
+  // if product quantity is less
+  if (product.inStock === false) {
+    throw new Error(' Stock out');
+  }
 
   const result = await OrderModel.create({
     email,
@@ -38,6 +42,7 @@ const createNewOrderToDb = async (
 
 const getRevenueFromDB = async () => {
   const result = await OrderModel.aggregate([
+    // stage 1
     {
       $lookup: {
         from: 'products',
@@ -46,7 +51,9 @@ const getRevenueFromDB = async () => {
         as: 'productDetails',
       },
     },
+    // stage 2
     { $unwind: '$productDetails' },
+    // stage 3
     {
       $group: {
         _id: null,
@@ -57,6 +64,7 @@ const getRevenueFromDB = async () => {
         },
       },
     },
+    // stage 4
     {
       $project: {
         _id: 0,
