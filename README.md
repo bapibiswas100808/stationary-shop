@@ -55,7 +55,14 @@ The backend is live at: [Stationery Shop Backend](https://stationary-shop-backen
 ### Steps
 
 1. Clone the repository:
+
    ```bash
-   git clone <https://github.com/bapibiswas100808/stationary-shop>
+   git clone https://github.com/bapibiswas100808/stationary-shop
    cd stationary-shop-backend
+   npm i
+   Create a .env file in the root directory and add:
+   DATABASE_URL=<your-mongodb-connection-string>
+   PORT=5000
+   npm run build
+   npm start
    ```
