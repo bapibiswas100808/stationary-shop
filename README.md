@@ -37,7 +37,7 @@ The backend is live at: [Stationery Shop Backend](https://stationary-shop-backen
 - **GET /api/products**: Retrieve all products.
 - **GET /api/products/:id**: Retrieve a single product by ID.
 - **POST /api/products**: Add a new product.
-- **PATCH /api/products/:id**: Update a product.
+- **PUT /api/products/:id**: Update a product.
 - **DELETE /api/products/:id**: Delete a product.
 
 ### Orders
@@ -75,7 +75,7 @@ The backend is live at: [Stationery Shop Backend](https://stationary-shop-backen
 
    ```
 
-4. Create a .env file in the root directory and add::
+4. Create a .env file in the root directory and add:
 
    ```bash
    DATABASE_URL=your mongoDB string
@@ -92,7 +92,7 @@ The backend is live at: [Stationery Shop Backend](https://stationary-shop-backen
 
 6. Linting and Formatting:
 
-```bash
-npm run lint
-npm run format
-```
+   ```bash
+   npm run lint
+   npm run format
+   ```
