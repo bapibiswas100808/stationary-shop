@@ -56,6 +56,6 @@ The backend is live at: [Stationery Shop Backend](https://stationary-shop-backen
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/bapibiswas100808/stationary-shop>
    cd stationary-shop-backend
    ```
