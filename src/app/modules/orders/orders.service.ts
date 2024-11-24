@@ -14,13 +14,13 @@ const createNewOrderToDb = async (
   if (!product) {
     throw new Error('Product not found');
   }
+  // if product quantity is 0
+  if (!product.inStock) {
+    throw new Error('Stock out');
+  }
   // if product quantity is less
   if (product.quantity < quantity) {
     throw new Error('Insufficient stock');
-  }
-  // if product quantity is less
-  if (product.inStock === false) {
-    throw new Error(' Stock out');
   }
 
   const result = await OrderModel.create({

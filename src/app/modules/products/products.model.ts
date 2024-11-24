@@ -33,6 +33,24 @@ const productsSchema = new Schema<Product>({
 });
 
 // query middleware
+productsSchema.pre('save', function (next) {
+  // inStock is must false when quantity<=0
+  if (this.quantity <= 0 && this.inStock === true) {
+    return next(
+      new Error(
+        'inStock cannot be true if quantity is less than or equal to 0',
+      ),
+    );
+  }
+  // inStock is must be true when quantity>0
+  if (this.quantity > 0 && this.inStock === false) {
+    return next(
+      new Error('inStock cannot be false if quantity is greater than 0'),
+    );
+  }
+  next();
+});
+
 productsSchema.pre('find', function (next) {
   this.find({ isDeleted: { $ne: true } });
   next();
