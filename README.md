@@ -59,13 +59,40 @@ The backend is live at: [Stationery Shop Backend](https://stationary-shop-backen
    ```bash
    git clone https://github.com/bapibiswas100808/stationary-shop
 
+   ```
+
+2. Select the repository:
+
+   ```bash
+   cd stationary-shop-backend
 
    ```
 
-2. cd stationary-shop-backend
-3. npm i
-4. Create a .env file in the root directory and add:
-   DATABASE_URL=your mongoDB string,
+3. Install Node Packages:
+
+   ```bash
+   npm i
+
+   ```
+
+4. Create a .env file in the root directory and add::
+
+   ```bash
+   DATABASE_URL=your mongoDB string
    PORT=5000
-5. npm run build
-6. npm start
+
+   ```
+
+5. Build and run the server:
+
+   ```bash
+   npm run build
+   npm start:dev
+   ```
+
+6. Linting and Formatting:
+
+```bash
+npm run lint
+npm run format
+```
