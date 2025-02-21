@@ -8,6 +8,10 @@ const createNewUserToDb = async (
   email: string,
   password: string,
 ) => {
+  const isUserExists = await User.find({ email: email });
+  if (isUserExists.length) {
+    throw new Error('User already exists');
+  }
   const user: TUser = {
     id: '',
     password: '',

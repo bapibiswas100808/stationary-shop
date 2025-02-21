@@ -21,6 +21,7 @@ const productsSchema = new Schema<Product>({
   },
 
   description: { type: String, required: [true, 'Description is Required'] },
+  image: { type: String, required: [true, 'Image is Required'] },
   quantity: { type: Number, required: [true, 'Quantity is Required'] },
   inStock: {
     type: Boolean,

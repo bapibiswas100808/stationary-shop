@@ -41,6 +41,6 @@ router.put(
   auth(USER_ROLE.user),
   OrderControllers.updateOrder,
 );
-router.get('/getAllOrder', auth(USER_ROLE.user), OrderControllers.getAllOrder);
+router.get('/getAllOrder', auth(USER_ROLE.admin), OrderControllers.getAllOrder);
 
 export const OrderRoutes = router;
