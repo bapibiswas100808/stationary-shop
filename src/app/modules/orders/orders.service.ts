@@ -38,6 +38,10 @@ const createOrderFromCart = async (userEmail: string, ip: string) => {
         transactionStatus: payment.transactionStatus,
       },
     });
+    await Cart.updateOne(
+      { email: userEmail },
+      { $set: { cartItems: [], totalPrice: 0 } },
+    );
   }
 
   return { payment, order };

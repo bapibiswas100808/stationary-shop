@@ -13,7 +13,7 @@ router.post('/', auth(USER_ROLE.user), OrderControllers.createOrder);
 router.get('/revenue', OrderControllers.getRevenue);
 router.post(
   '/createOrder',
-  auth(USER_ROLE.user),
+  auth(USER_ROLE.user, USER_ROLE.admin),
   OrderControllers.createOrderCart,
 );
 router.get(

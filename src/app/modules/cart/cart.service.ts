@@ -71,8 +71,18 @@ const addToCart = async (
     );
   }
 
-  // Save cart
+  // Reduce product quantity in the inventory
+  product.quantity -= quantity;
+
+  // If product runs out of stock
+  if (product.quantity === 0) {
+    product.inStock = false;
+  }
+
+  // Save updates to the product and cart
+  await product.save();
   await cart.save();
+
   return cart;
 };
 
