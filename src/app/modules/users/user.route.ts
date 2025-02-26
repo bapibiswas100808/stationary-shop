@@ -12,9 +12,14 @@ router.post(
   auth(USER_ROLE.admin),
   UserControllers.changeStatus,
 );
+router.get(
+  '/allUser/:email',
+  auth(USER_ROLE.user, USER_ROLE.admin),
+  UserControllers.getSingleUser,
+);
 router.put(
   '/updateAddress/:id',
-  auth(USER_ROLE.user),
+  auth(USER_ROLE.user, USER_ROLE.admin),
   UserControllers.updateUserAddress,
 );
 

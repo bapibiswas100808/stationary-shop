@@ -37,6 +37,24 @@ const getALlUser = async (req: Request, res: Response) => {
     });
   }
 };
+const getSingleUser = async (req: Request, res: Response) => {
+  const { email } = req.params;
+  try {
+    const result = await UserServices.getSingleUserFromDb(email);
+
+    res.status(200).json({
+      success: true,
+      message: 'Users Retrived Succesfully!',
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(200).json({
+      success: false,
+      message: error.message || 'Validation Error',
+      error: error,
+    });
+  }
+};
 const changeStatus = async (req: Request, res: Response) => {
   const { email } = req.params;
 
@@ -88,4 +106,5 @@ export const UserControllers = {
   getALlUser,
   changeStatus,
   updateUserAddress,
+  getSingleUser,
 };

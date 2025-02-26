@@ -33,6 +33,10 @@ const getAllUserFromDb = async () => {
   const result = await User.find();
   return result;
 };
+const getSingleUserFromDb = async (email: string) => {
+  const result = await User.findOne({ email: email });
+  return result;
+};
 
 const changeStatusOfUser = async (email: string) => {
   const user = await User.findOne({ email });
@@ -83,4 +87,5 @@ export const UserServices = {
   getAllUserFromDb,
   changeStatusOfUser,
   updateUserToDb,
+  getSingleUserFromDb,
 };

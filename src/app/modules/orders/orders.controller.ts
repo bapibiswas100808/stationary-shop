@@ -126,7 +126,7 @@ const deleteOrder = async (req: Request, res: Response) => {
 };
 const getSingleOrder = async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
+    const { id } = req.params;
     const result = await OrderServices.getSingleOrder(id);
 
     res.status(200).json({

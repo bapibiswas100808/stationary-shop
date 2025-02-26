@@ -38,10 +38,10 @@ const createOrderFromCart = async (userEmail: string, ip: string) => {
         transactionStatus: payment.transactionStatus,
       },
     });
-    await Cart.updateOne(
-      { email: userEmail },
-      { $set: { cartItems: [], totalPrice: 0 } },
-    );
+    // await Cart.updateOne(
+    //   { email: userEmail },
+    //   { $set: { cartItems: [], totalPrice: 0 } },
+    // );
   }
 
   return { payment, order };
@@ -144,18 +144,17 @@ const deleteOrder = async (id: string) => {
 };
 
 // get single order
-const getSingleOrder = async (id: string) => {
-  const result = await OrderModel.findOne({ _id: id }).populate({
+const getSingleOrder = async (email: string) => {
+  const result = await OrderModel.find({ email: email }).populate({
     path: 'product', // First populate the cart
     populate: {
       path: 'cartItems.productId', // Inside the cart
       model: 'Product',
     },
   });
-  if (result?.isDeleted === true) {
-    throw new Error('Order has been Deleted');
-  }
-  return result;
+  const activeOrders = result?.filter((r) => r.isDeleted !== true);
+
+  return activeOrders;
 };
 
 // change status
