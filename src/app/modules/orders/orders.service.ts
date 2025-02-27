@@ -130,9 +130,10 @@ const getAllOrder = async () => {
 
 // delete order
 const deleteOrder = async (id: string) => {
-  const result = await OrderModel.updateOne(
+  const result = await OrderModel.findOneAndUpdate(
     { _id: id },
     { isDeleted: true },
+    { new: true },
   ).populate({
     path: 'product', // First populate the cart
     populate: {

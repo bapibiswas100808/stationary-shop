@@ -23,7 +23,7 @@ router.get(
 );
 router.put(
   '/deleteOrder/:id',
-  auth(USER_ROLE.user),
+  auth(USER_ROLE.admin),
   OrderControllers.deleteOrder,
 );
 router.get(
@@ -33,12 +33,12 @@ router.get(
 );
 router.put(
   '/changeStatus/:id',
-  auth(USER_ROLE.user),
+  auth(USER_ROLE.admin),
   OrderControllers.changeOrderStatus,
 );
 router.put(
   '/updateOrder/:id',
-  auth(USER_ROLE.user),
+  auth(USER_ROLE.admin),
   OrderControllers.updateOrder,
 );
 router.get('/getAllOrder', auth(USER_ROLE.admin), OrderControllers.getAllOrder);
